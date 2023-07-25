@@ -1,0 +1,28 @@
+.menu
+    position: absolute
+    left: 50vw
+    top: 50vh
+    transform: translate(-50%, -50%)
+    
+.menu > *
+    border-radius: 50%
+    background-color: lightgray
+    width: 5em
+    height: 5em
+    display: flex
+    align-items: center
+    flex-direction: column
+    justify-content: center
+    margin: -2em
+    transition: scale 0.5s, background-color 0.5s, color 0.5s
+    color: white
+    font-size: 3em
+.menu > *:nth-child(even)
+    transform: translateX(30%)
+.menu > *:nth-child(odd)
+    transform: translateX(-30%)
+.menu > *:hover
+    scale: 1.2
+    background-color: white
+    color: darkgray
+    cursor: pointer
