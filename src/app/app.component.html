@@ -1,7 +1,7 @@
 <div class="background">
     <div *ngFor="let bubble of bubbles" class="bubble" [ngStyle]="bubble.styles()" 
-        (mouseenter)="bubble.hovering = true" 
-        (mouseleave)="bubble.hovering = false">
+        (mouseenter)="bubble.setHovering(true)" 
+        (mouseleave)="bubble.setHovering(false)">
 
     </div>
 </div>
