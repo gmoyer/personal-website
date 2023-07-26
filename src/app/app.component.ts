@@ -6,8 +6,8 @@ class Bubble {
   x : number = 0;
   y : number = 0;
   z : number = 0;
-  mx : number = 50;
-  my : number = 50;
+  mx : number = 0.5;
+  my : number = 0.5;
   size : number;
   color : number;
   hovering : boolean = false;
