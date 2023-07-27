@@ -1,8 +1,10 @@
 <div class="background">
-    <div *ngFor="let bubble of bubbles" class="bubble" [ngStyle]="bubble.styles()" 
+    <div *ngFor="let layer of bubbleLayers" class="bubbleLayer" [ngStyle]="layer.style">
+        <div *ngFor="let bubble of layer.bubbles" class="bubble" [ngStyle]="bubble.style"
         (mouseenter)="bubble.setHovering(true)" 
         (mouseleave)="bubble.setHovering(false)">
-
+        </div>
     </div>
+    
 </div>
 <router-outlet></router-outlet>
