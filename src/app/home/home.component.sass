@@ -1,10 +1,34 @@
-.menu
+.content
     position: absolute
     left: 50vw
     top: 50vh
+    width: 95%
     transform: translate(-50%, -50%)
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    pointer-events: none
+.name
+    font-size: 10em
+    color: white
+    text-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px
+    font-family: Tahoma, sans-serif
+    font-weight: bolder
+    letter-spacing: -0.02em
+
+.menu
+    display: flex
+    align-items: center
+    flex-direction: column
+    height: 100vh
+    justify-content: center
+    width: 30em
+    margin-left: 5em
+    margin-right: 5em
     
 .menu > *
+    pointer-events: auto
     border-radius: 50%
     background-color: lightgray
     width: 5em
@@ -13,7 +37,7 @@
     align-items: center
     flex-direction: column
     justify-content: center
-    margin: -2em
+    margin: -1em
     transition: scale 0.5s, background-color 0.5s, color 0.5s
     color: white
     font-size: 3em
