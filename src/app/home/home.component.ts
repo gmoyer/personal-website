@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     y -= window.innerHeight/2;
     x /= window.innerWidth/window.innerHeight;
     y /= window.innerHeight/window.innerWidth;
-    var tan = 90 - Math.atan(y / x) * 180 / Math.PI;
+    var tan = 90 + Math.atan(y / x) * 180 / Math.PI;
     if (x < 0)
       tan += 180;
     return tan;
