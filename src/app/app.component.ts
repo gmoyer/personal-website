@@ -78,7 +78,7 @@ class Bubble {
 
   updateColor() {
     if (this.active)
-      this.style['backgroundColor'] = `rgb(${this.color-65}, ${this.color-65}, 255)`;
+      this.style['backgroundColor'] = `rgb(${this.color-10}, ${this.color-10}, 255)`;
     else
       this.style['backgroundColor'] = `rgb(${this.color}, ${this.color}, ${this.color})`;
   }

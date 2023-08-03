@@ -11,11 +11,13 @@
     pointer-events: none
 .name
     font-size: 10em
-    color: white
+    color: transparent
     text-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px
     font-family: Tahoma, sans-serif
     font-weight: bolder
     letter-spacing: -0.02em
+    background-clip: text
+    -webkit-background-clip: text
 
 .menu
     display: flex
@@ -30,7 +32,7 @@
 .menu > *
     pointer-events: auto
     border-radius: 50%
-    background-color: lightgray
+    background-color: #b3b3b3
     width: 5em
     height: 5em
     display: flex
@@ -49,5 +51,5 @@
 .menu > *:hover
     scale: 1.2
     background-color: white
-    color: darkgray
+    color: #b3b3b3
     cursor: pointer
