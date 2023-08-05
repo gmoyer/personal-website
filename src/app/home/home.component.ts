@@ -6,9 +6,14 @@ import Menu from './menu.json';
 const MenuAnimation = trigger('MenuAnimation', [
   transition("* => *", [
     query(':enter', [
-      style({ opacity: 0}),
-      stagger(50, [
-        animate('300ms ease-out', style({ opacity: 1})),
+      style({ scale: 0}),
+      stagger(200, [
+        animate('300ms ease-out', style({ scale: 1.2})),
+        animate('300ms ease-out', style({ scale: 0.9})),
+        animate('300ms ease-out', style({ scale: 1.05})),
+        animate('300ms ease-out', style({ scale: 0.975})),
+        animate('300ms ease-out', style({ scale: 1.0125})),
+        animate('300ms ease-out', style({ scale: 1})),
       ]),
     ], { optional: true })
   ])
