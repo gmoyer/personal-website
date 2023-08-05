@@ -1,0 +1,29 @@
+{
+    "people": [
+        "Mustard",
+        "Plum",
+        "Green",
+        "Peacock",
+        "Scarlet",
+        "White"
+    ],
+    "weapons": [
+        "Knife",
+        "Candlestick",
+        "Pistol",
+        "Rope",
+        "Lead Pipe",
+        "Wrench"
+    ],
+    "rooms": [
+        "Hall",
+        "Lounge",
+        "Dining Room",
+        "Kitchen",
+        "Ball Room",
+        "Conservatory",
+        "Billiard Room",
+        "Library",
+        "Study"
+    ]
+}
