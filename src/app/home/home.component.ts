@@ -11,8 +11,6 @@ const MenuAnimation = trigger('MenuAnimation', [
         animate('300ms ease-out', style({ scale: 1.2})),
         animate('300ms ease-out', style({ scale: 0.9})),
         animate('300ms ease-out', style({ scale: 1.05})),
-        animate('300ms ease-out', style({ scale: 0.975})),
-        animate('300ms ease-out', style({ scale: 1.0125})),
         animate('300ms ease-out', style({ scale: 1})),
       ]),
     ], { optional: true })
