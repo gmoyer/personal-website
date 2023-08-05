@@ -1,10 +1,7 @@
 <div class="content">
     <div class="name" [style.background-image]="gradient">Griffin Moyer</div>
-    <div class="menu">
-        <div>About</div>
-        <div>Projects</div>
-        <div [routerLink]="['/social']">Social</div>
-        <div>Resume</div>
+    <div class="menu" [@MenuAnimation]>
+        <div *ngFor="let item of menu" [routerLink]="item.link">{{item.title}}</div>
     </div>
 </div>
 

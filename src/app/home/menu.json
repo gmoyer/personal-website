@@ -1,0 +1,22 @@
+[
+    {
+        "title": "About",
+        "link": ["/social"]
+    },
+    {
+        "title": "Projects",
+        "link": ["/social"]
+    },
+    {
+        "title": "Social",
+        "link": ["/social"]
+    },
+    {
+        "title": "Resume",
+        "link": ["/social"]
+    },
+    {
+        "title": "Contact",
+        "link": ["/social"]
+    }
+]
