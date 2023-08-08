@@ -1,4 +1,4 @@
-<div class="background">
+<div class="background" [@BubbleAnimation]="router.url">
     <div *ngFor="let layer of bubbleLayers" class="bubbleLayer" [ngStyle]="layer.style">
         <div *ngFor="let bubble of layer.bubbles" class="bubble" [ngStyle]="bubble.style"
         (mouseenter)="bubble.setHovering(true)" 
@@ -6,5 +6,9 @@
         </div>
     </div>
     
+</div>
+<div class="nav">
+    <div id="home" [routerLink]="['/']">G</div>
+    <div class="menuNav" *ngFor="let item of menu" [routerLink]="item.link">{{item.title}}</div>
 </div>
 <router-outlet></router-outlet>

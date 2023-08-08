@@ -1,5 +1,20 @@
-import { state, trigger } from '@angular/animations';
+import { animate, query, stagger, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import Menu from './menu.json';
+
+
+const BubbleAnimation = trigger('BubbleAnimation', [
+  /*
+  transition("* => *", [
+    query('div', [
+      style({rotate: '1 0 0 360deg'}),
+      animate('2000ms ease-out', style({rotate: '1 0 0 0deg'}))
+    ], { optional: true }),
+  ])
+  */
+])
+
 
 class BubbleLayer {
   bubbles : Bubble[] = [];
@@ -89,6 +104,7 @@ class Bubble {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
+  animations: [BubbleAnimation]
 })
 export class AppComponent implements OnInit {
   bubbles : Bubble[] = [];
@@ -99,9 +115,11 @@ export class AppComponent implements OnInit {
   zStop : number = 5;
   zStep : number = 0.5;
 
+  menu : any = Menu;
+
   zCount : number = (this.zStop-this.zStart) / this.zStep;
 
-  constructor() {
+  constructor(public router : Router) {
     for (var z = this.zStart; z < this.zStop; z += this.zStep) {
       var layer = new BubbleLayer(z);
       this.bubbleLayers.push(layer);

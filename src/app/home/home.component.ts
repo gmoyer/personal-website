@@ -1,6 +1,7 @@
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import Menu from './menu.json';
+import Menu from '../menu.json';
+import { Router } from '@angular/router';
 
 
 const MenuAnimation = trigger('MenuAnimation', [
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
   menu : any = Menu;
 
   constructor() {
-
+    
   }
   ngOnInit(): void {
     addEventListener("mousemove", (event) => {
