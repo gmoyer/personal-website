@@ -42,7 +42,9 @@ class Bubble {
   x : number = 0;
   y : number = 0;
 
-  size : number;
+  width : number;
+  height : number;
+  rotation : number;
   color : number;
   hovering : boolean = false;
   active : boolean = false;
@@ -63,14 +65,17 @@ class Bubble {
       });
       attempts++;
     }
-    this.size = Math.floor(Math.random() * 150) + 100;
+    this.width = Math.floor(Math.random() * 150) + 100;
+    this.height = Math.floor(Math.random() * 150) + 100;
+    this.rotation = Math.floor(Math.random() * 360);
     this.color = 245 - Math.floor(Math.random() * 35); //rgb values
     this.updateColor();
 
     this.style['left'] = this.x + 'vw';
     this.style['top'] = this.y + 'vh';
-    this.style['width'] = this.size + 'px';
-    this.style['height'] = this.size + 'px';
+    this.style['width'] = this.width + 'px';
+    this.style['height'] = this.height + 'px';
+    this.style['transform'] = `translate(-50%, -50%) rotate(${this.rotation}deg)`;
 
     bubbleLayer.bubbles.push(this);
   }

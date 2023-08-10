@@ -8,7 +8,7 @@
     
 </div>
 <div class="nav">
-    <div id="home" [routerLink]="['/']">G</div>
+    <div id="home" [routerLink]="['/']" title="Home">G</div>
     <div class="menuNav" *ngFor="let item of menu" [routerLink]="item.link">{{item.title}}</div>
 </div>
 <router-outlet></router-outlet>
