@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SocialComponent } from './social/social.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [{
   path: '',
@@ -12,6 +13,11 @@ const routes: Routes = [{
   path: 'social',
   component: SocialComponent,
   title: "Griffin Moyer | Social"
+},
+{
+  path: 'about',
+  component: AboutComponent,
+  title: "Griffin Moyer | About"
 }];
 
 @NgModule({
