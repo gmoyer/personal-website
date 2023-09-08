@@ -15,29 +15,6 @@ const BubbleAnimation = trigger('BubbleAnimation', [
   */
 ])
 
-
-class BubbleLayer {
-  bubbles : Bubble[] = [];
-  z : number = 0;
-  mx : number = 0.5;
-  my : number = 0.5;
-  style : {[key : string] : any} = {
-    left: '0%',
-    top: '0%'
-  };
-
-  constructor(z : number) {
-    this.z = z;
-    //this.z = Math.random()*3+3;
-  }
-
-
-  updateStyle() {
-    this.style['left'] = ((0.5-this.mx)*this.z) + '%';
-    this.style['top'] = ((0.5-this.my)*this.z) + '%';
-  }
-}
-
 class Bubble {
   x : number = 0;
   y : number = 0;
@@ -50,7 +27,7 @@ class Bubble {
 
   style : {[key: string] : any} = {};
 
-  constructor(bubbles : Bubble[], bubbleLayer : BubbleLayer) {
+  constructor(bubbles : Bubble[]) {
     var goodSpot = false;
     var attempts = 0;
     while (!goodSpot && attempts < 100) {
@@ -59,14 +36,14 @@ class Bubble {
       
       goodSpot = true;
       bubbles.forEach(bubble => {
-        if (Math.abs(bubble.x - this.x) <= 4 && Math.abs(bubble.y - this.y) <= 4)
+        if (Math.abs(bubble.x - this.x) <= 7 && Math.abs(bubble.y - this.y) <= 7)
           goodSpot = false;
       });
       attempts++;
     }
-    this.size = Math.floor(Math.random() * 150) + 100;
+    this.size = Math.floor(Math.random() * 300) + 150;
     this.rotation = Math.floor(Math.random() * 360);
-    this.color = 245 - Math.floor(Math.random() * 35); //rgb values
+    this.color = 250 - Math.floor(Math.random() * 25); //rgb values
     this.updateColor();
 
     this.style['left'] = this.x + 'vw';
@@ -74,8 +51,6 @@ class Bubble {
     this.style['width'] = this.size + 'px';
     this.style['height'] = this.size + 'px';
     this.style['transform'] = `translate(-50%, -50%)`;// rotate(${this.rotation}deg)`;
-
-    bubbleLayer.bubbles.push(this);
   }
 
   setHovering(hovering : boolean) {
@@ -111,8 +86,7 @@ class Bubble {
 })
 export class AppComponent implements OnInit {
   bubbles : Bubble[] = [];
-  bubbleLayers : BubbleLayer[] = [];
-  bubbleCount : number = 200;
+  bubbleCount : number = 70;
 
   zStart : number = 1;
   zStop : number = 5;
@@ -123,22 +97,11 @@ export class AppComponent implements OnInit {
   zCount : number = (this.zStop-this.zStart) / this.zStep;
 
   constructor(public router : Router) {
-    for (var z = this.zStart; z < this.zStop; z += this.zStep) {
-      var layer = new BubbleLayer(z);
-      this.bubbleLayers.push(layer);
-      for (var i = 0; i < this.bubbleCount / this.zCount; i++) {
-        this.bubbles.push(new Bubble(this.bubbles, layer));
-      }
+    for (var i = 0; i < this.bubbleCount; i++) {
+      this.bubbles.push(new Bubble(this.bubbles));
     }
   }
 
   ngOnInit(): void {
-    addEventListener("mousemove", (event) => {
-      this.bubbleLayers.forEach(layer => {
-        layer.mx = event.clientX / window.innerWidth;
-        layer.my = event.clientY / window.innerHeight;
-        layer.updateStyle();
-      })
-    })
   }
 }
