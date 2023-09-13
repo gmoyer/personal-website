@@ -7,3 +7,21 @@
     font-family: Tahoma, sans-serif
 body
     margin: 0
+.tooltip
+    position: absolute
+    left: calc(100% + 1em)
+    background-color: white
+    border: 1px solid var(--bubble-gray)
+    padding: 0.1em
+    font-size: 0.7em
+    text-align: center
+    div
+        width: 0.5em
+        height: 0.5em
+        position: absolute
+        top: 50%
+        left: 0%
+        transform: translate(-50%, -50%) rotate(45deg)
+        background-color: white
+        border-bottom: 1px solid var(--bubble-gray)
+        border-left: 1px solid var(--bubble-gray)
