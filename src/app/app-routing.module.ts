@@ -5,6 +5,8 @@ import { SocialComponent } from './social/social.component';
 import { AboutComponent } from './about/about.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { BlogComponent } from './blog/blog.component';
 
 const routes: Routes = [{
   path: '',
@@ -30,6 +32,21 @@ const routes: Routes = [{
   path: 'contact',
   component: ContactComponent,
   title: "Griffin Moyer | Contact"
+},
+{
+  path: 'projects',
+  children: [
+    {
+      path: '',
+      component: ProjectsComponent,
+      title: 'Griffin Moyer | Projects',
+    },
+    {
+      path: ':id',
+      component: BlogComponent,
+      title: 'New One!'
+    }
+  ]
 }
 ];
 

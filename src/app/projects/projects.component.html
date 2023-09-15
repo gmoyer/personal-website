@@ -1,1 +1,3 @@
-<p>projects works!</p>
+<section class="content">
+    <div class="post" *ngFor="let post of posts" [routerLink]="[post.route]">{{post.name}}</div>
+</section>
