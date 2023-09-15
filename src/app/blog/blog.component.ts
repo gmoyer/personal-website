@@ -25,8 +25,8 @@ export class BlogComponent implements OnInit {
             posts.forEach(post => {
               if (post.route == name) {
                 this.blogService.getPost(post.filename).subscribe({
-                  next: (post) => {
-                    this.content = post;
+                  next: (content) => {
+                    this.content = this.blogService.parseHTML(content, post);
                   },
                   error: (error) => {
                     console.error('Error fetching HTML content:', error);
