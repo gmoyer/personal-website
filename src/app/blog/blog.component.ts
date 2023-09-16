@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BlogService } from '../blog.service';
+import { BlogService, Post, SectionType } from '../blog.service';
 
 @Component({
   selector: 'app-blog',
@@ -9,31 +9,30 @@ import { BlogService } from '../blog.service';
 })
 export class BlogComponent implements OnInit {
 
-  content : String = "";
+  post : Post = {
+    id: "",
+    name: "",
+    images: [],
+    content: []
+  };
 
   constructor(
     private route : ActivatedRoute,
     private blogService : BlogService
-  ) {}
+  ) {
+  }
+
+  public get sectionType() : typeof SectionType {
+    return SectionType;
+  }
   
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      const name = params.get('id');
-      if (name) {
-        this.blogService.getPosts().subscribe({
-          next: (posts) => {
-            posts.forEach(post => {
-              if (post.route == name) {
-                this.blogService.getPost(post.filename).subscribe({
-                  next: (content) => {
-                    this.content = this.blogService.parseHTML(content, post);
-                  },
-                  error: (error) => {
-                    console.error('Error fetching HTML content:', error);
-                  }
-                });
-              }
-            })
+      const postRoute = params.get('id');
+      if (postRoute) {
+        this.blogService.getPost(postRoute).subscribe({
+          next: (post) => {
+            this.post = post;
           },
           error: (error) => {
             console.error('Error fetching HTML content:', error);

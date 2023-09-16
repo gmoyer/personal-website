@@ -2,11 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
+export enum SectionType {
+  IMAGE,
+  TEXT
+}
+
+export interface Section {
+  type : SectionType;
+  class : String;
+  src : String; //image address for images
+  text : String;
+}
+
 export interface Post {
-  filename : String;
-  route : String;
+  id : String;
   name : String;
   images : String[];
+  content : Section[]; 
 }
 
 @Injectable({
@@ -24,27 +37,52 @@ export class BlogService {
     return this.http.get<Post[]>(this.baseApi + 'bloglist.json');
   }
 
-  getPost(name : String) : Observable<String> {
-    return this.http.get<String>(this.baseApi + 'posts/' + name + '/index.html', {responseType: 'text' as 'json'});
+  getPost(route : String) : Observable<Post> {
+    return new Observable((subscriber) => {
+      this.getPosts().subscribe({
+        next: (posts) => {
+          posts.forEach(post => {
+            if (post.id == route) {
+              this.http.get<String>(this.baseApi + 'posts/' + route + '/content.txt', {responseType: 'text' as 'json'}).subscribe({
+                next: (content) => {
+                  post.content = this.parseContent(content, post);
+                  subscriber.next(post);
+                }
+              });
+            }
+          });
+        }
+      });
+    });
   }
 
-  parseHTML(html : String, post : Post) : String { //add api to any src
-    var out : String[] = [];
-    html.split("src").forEach((s, index) => {
-      if (index != 0) {
-        var m = s.split("\"");
-      
-        if (m.length > 2) {
-          console.log(m[1]);
-          m[1] = this.baseApi + 'posts/' + post.filename + '/' + m[1];
-          console.log(m[1]);
-        }
+  parseContent(content : String, post : Post) : Section[] { //add api to any src
+    var out : Section[] = [];
 
-        out.push(m.join(""));
+
+    content.split("\n").forEach(line => {
+      var parse = line.split(">>");
+      if (parse.length > 1 && parse[0] == "") {
+        switch(parse[1]) {
+          case "IMAGE":
+            out.push({
+              text: parse[3],
+              type: SectionType.IMAGE,
+              class: "image",
+              src: this.baseApi + 'posts/' + post.id + '/' + parse[2]
+            });
+            break;
+        }
       } else {
-        out.push(s);
+        out.push({
+          text: line,
+          type: SectionType.TEXT,
+          class: "text",
+          src: ""
+        });
       }
-    })
-    return out.join("src");
+    });
+
+    return out;
   }
 }
