@@ -44,7 +44,7 @@ const routes: Routes = [{
     {
       path: ':id',
       component: BlogComponent,
-      title: 'New One!'
+      title: 'Griffin Moyer'
     }
   ]
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService, Post, SectionType } from '../blog.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog',
@@ -18,7 +19,8 @@ export class BlogComponent implements OnInit {
 
   constructor(
     private route : ActivatedRoute,
-    private blogService : BlogService
+    private blogService : BlogService,
+    private title : Title
   ) {
   }
 
@@ -33,6 +35,7 @@ export class BlogComponent implements OnInit {
         this.blogService.getPost(postRoute).subscribe({
           next: (post) => {
             this.post = post;
+            this.title.setTitle(String("Griffin Moyer | " + this.post.name));
           },
           error: (error) => {
             console.error('Error fetching HTML content:', error);
