@@ -3,7 +3,8 @@
         <div class="title">{{post.name}}</div>
         <div *ngFor="let section of post.content" class="section" [ngClass]="section.class">
             <img *ngIf="section.type == sectionType.IMAGE" [src]="section.src">
-            <div>{{section.text}}</div>
+            <div *ngIf="section.type != sectionType.LINK">{{section.text}}</div>
+            <a *ngIf="section.type == sectionType.LINK" [href]="section.src">{{section.text}}</a>
         </div>
     </div>
 </section>

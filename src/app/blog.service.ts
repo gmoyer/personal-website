@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 
 export enum SectionType {
   IMAGE,
-  TEXT
+  TEXT,
+  LINK
 }
 
 export interface Section {
@@ -70,6 +71,15 @@ export class BlogService {
               type: SectionType.IMAGE,
               class: "image",
               src: this.baseApi + 'posts/' + post.id + '/' + parse[2]
+            });
+            break;
+          case "LINK":
+            console.log("parsing link...");
+            out.push({
+              text: parse[3],
+              type: SectionType.LINK,
+              class: "link",
+              src: parse[2]
             });
             break;
         }

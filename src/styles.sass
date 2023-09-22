@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+$layout-small: 500px
 :root
     --primary-text-color: #333333
     --bubble-gray: #c5c5c5
     --bubble-border: #ebebeb
     --hover-green: rgb(210, 255, 210)
+    --secondary-text-color: #b1b1b1
     font-family: Tahoma, sans-serif
 body
     margin: 0
@@ -25,3 +27,16 @@ body
         background-color: white
         border-bottom: 1px solid var(--bubble-gray)
         border-left: 1px solid var(--bubble-gray)
+
+
+
+.header
+    position: absolute
+    top: 0
+    left: 0
+    transform: translateY(-100%)
+    font-size: 100px
+    color: rgba(0, 0, 0, 0)
+    font-weight: bolder
+    -webkit-text-stroke: 5px
+    -webkit-text-stroke-color: var(--secondary-text-color)

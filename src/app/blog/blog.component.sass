@@ -1,3 +1,5 @@
+$layout-small: 900px
+
 .content
     width: 100%
     display: flex
@@ -5,7 +7,8 @@
     align-items: center
 .post
     width: 70vw
-    min-height: calc(100vh)
+    min-height: calc(100vh - 10em)
+    padding-bottom: 10em
     //border: 1em solid white
     //border-radius: 1em
     background-color: white
@@ -19,10 +22,21 @@
     margin-left: 1em
     margin-right: 1em
 .text
-    margin: 1em 20vw
+    margin: 1em 17vw
 .image
     margin: 3em 0em
     font-style: italic
     text-align: center
     img
-        height: 20vw
+        max-height: 20vw
+        max-width: 60vw
+.link
+    text-align: center
+    margin: 3em 0em
+
+
+@media (max-width: $layout-small)
+    .post
+        width: 100vw
+    .text
+        margin: 1em 10vw

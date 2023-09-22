@@ -1,3 +1,5 @@
+$layout-small: 900px
+    
 .background
     position: fixed
     width: 100%
@@ -56,3 +58,13 @@
         opacity: 1
 .bubbleLayer
     position: fixed
+
+
+@media (max-width: $layout-small)
+    .nav
+        .menuNav
+            display: none
+    .nav:hover
+        padding: 0
+        .menuNav
+            display: none
