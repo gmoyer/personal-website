@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 export enum SectionType {
   IMAGE,
   TEXT,
-  LINK
+  LINK,
+  CODE
 }
 
 export interface Section {
@@ -82,6 +83,13 @@ export class BlogService {
               src: parse[2]
             });
             break;
+          case "CODE":
+            out.push({
+              text: parse[3],
+              type: SectionType.CODE,
+              class: "code",
+              src: parse[2]
+            })
         }
       } else {
         out.push({

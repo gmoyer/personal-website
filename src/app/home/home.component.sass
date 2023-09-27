@@ -1,4 +1,4 @@
-$layout-small: 900px
+@import 'vars'
 .content
     position: absolute
     width: 100%
@@ -31,7 +31,7 @@ $layout-small: 900px
     *
         pointer-events: auto
         border-radius: 50%
-        background-color: var(--bubble-gray)
+        background-color: $bubble-gray
         width: 25vh
         height: 25vh
         display: flex
@@ -50,7 +50,7 @@ $layout-small: 900px
     *:hover
         scale: 1.2
         background-color: white
-        color: var(--bubble-gray)
+        color: $bubble-gray
         cursor: pointer
 
 

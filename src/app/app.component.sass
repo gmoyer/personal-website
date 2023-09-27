@@ -1,4 +1,4 @@
-$layout-small: 900px
+@import 'vars'
     
 .background
     position: fixed
@@ -24,7 +24,7 @@ $layout-small: 900px
     flex-direction: row
     justify-self: start
     *
-        background-color: var(--bubble-gray)
+        background-color: $bubble-gray
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
         border-radius: 50%
         display: flex
@@ -46,7 +46,7 @@ $layout-small: 900px
         transition: margin-left 0.5s, opacity 0.5s, scale 0.5s, background-color 0.5s, color 0.5s
     .menuNav:hover
         background-color: white
-        color: var(--bubble-gray)
+        color: $bubble-gray
         scale: 1.2
 .nav:hover
     padding-right: 5em
